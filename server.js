@@ -1,6 +1,13 @@
 // Part of https://github.com/chris-rock/node-crypto-examples
 
 // Nodejs encryption with CTR
+
+http  = require("http")
+cfenv = require("cfenv")
+
+var express = require('express');
+var app = express();
+
 var crypto = require('crypto'),
     algorithm = 'aes-256-ctr',
     password = 'd6F3Efeq';
@@ -22,3 +29,24 @@ function decrypt(text){
 var hw = encrypt("hello world")
 // outputs hello world
 console.log(decrypt(hw));
+
+
+
+// get environmental information for this app
+appEnv   = cfenv.getAppEnv()
+instance = appEnv.app.instance_index || 0
+
+
+
+// start the server on the calculated port and host
+
+
+var server = app.listen(appEnv.port, function () {
+   var host = server.address().address
+   var port = server.address().port
+
+   console.log("Example app listening at http://%s:%s", host, port)
+  var hw = encrypt("hello world")
+// outputs hello world
+console.log(decrypt(hw));
+})
