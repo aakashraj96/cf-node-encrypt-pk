@@ -26,10 +26,15 @@ function decrypt(text){
   return dec;
 }
  
-var hw = encrypt("hello world")
-// outputs hello world
-console.log(decrypt(hw));
 
+
+
+app.get('/', function (req,res) {
+  var hw = encrypt("hello world")
+// outputs hello world
+console.log(decrypt(hw)); 
+  res.send(hw);
+});
 
 
 // get environmental information for this app
